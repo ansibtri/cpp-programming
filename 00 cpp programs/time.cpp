@@ -7,7 +7,7 @@ class Time{
     int second;
 
     public:
-        void setTime(){
+        void set(){
             cout<<"Enter Hour: ";
             cin>>hour;
             cout<<"Enter minute: ";
@@ -15,32 +15,24 @@ class Time{
             cout<<"Enter second: ";
             cin>>second;
         }
-        void getTime(){
+        void get(){
             cout<<"Time is: "<<hour<<"hr:"<<minute<<"m:"<<second<<"s"<<endl;
         }
-        void calcTime(Time t1, Time t2){
-            int secs = t1.second + t2.second;
-            int min = 0;
-            int hr = 0;
-            if(secs>=60){
-                min = secs/60;
-                second = secs%60;
-            }
-            minute = t1.minute+t2.minute + min;
-            if(minute >= 60){
-                hr = minute/60;
-                minute=minute%60;
-            }
-            hour = t1.hour + t2.hour + hr;
+        void sum(Time t1, Time t2){
+            second = t1.second + t2.second;
+            minute = t1.minute + t2.minute + second/60;
+            second = second % 60;
+            hour = t1.hour + t2.hour + minute/60;
+            minute = minute % 60;
         }
 };
 int main(){
     Time t1, t2, t3;
-    t1.setTime();
-    t2.setTime();
-    t1.getTime();
-    t2.getTime();
-    t3.calcTime(t1,t2);
-    t3.getTime();
+    t1.set();
+    t2.set();
+    t1.get();
+    t2.get();
+    t3.sum(t1,t2);
+    t3.get();
     return 0;
 }
