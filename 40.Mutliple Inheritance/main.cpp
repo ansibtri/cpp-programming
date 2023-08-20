@@ -13,6 +13,9 @@ class Base1{
         void set_base1int(int a){
             base1int = a;
         }
+        ~Base1(){
+            cout<<"I am base1 destructor"<<endl;
+        }
 };
 class Base2{
     protected:
@@ -20,6 +23,9 @@ class Base2{
     public:
         void set_base2int(int a){
             base2int = a;
+        }
+        ~Base2(){
+            cout<<"I am base2 destructor"<<endl;
         }
 };
 
@@ -29,6 +35,9 @@ class Derived: public Base1, public Base2{
             cout<<"The value of Base1 is "<<base1int<<endl;
             cout<<"The value of Base2 is "<<base2int<<endl;
             cout<<"The sum of these values is "<<base1int+base2int<<endl;
+        }
+        ~Derived(){
+            cout<<"Derived Destructor"<<endl;
         }
 };
 // The inherited derived class will look something like this: 
